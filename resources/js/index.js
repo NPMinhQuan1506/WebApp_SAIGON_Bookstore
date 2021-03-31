@@ -2,9 +2,13 @@ $(document).ready(function () {
   setupProductMenu();
   toggleProductMenu();
   setupIntroductionBanner();
-  var startTime ="2021-03-30  19:00:00";
+  var startTime = "2021-03-30  19:00:00";
   makeTimer(startTime);
-  setInterval(function() { makeTimer(startTime); }, 1000);
+  setInterval(function () {
+    makeTimer(startTime);
+  }, 1000);
+  setupFlashSaleSlider();
+  processLastSlide();
 });
 
 function setupProductMenu() {
@@ -48,23 +52,23 @@ function toggleSubMenu(currentSubMenu, isToggle) {
     currentSubMenu.find(".mega-menu").css("display", "none");
   }
 }
-function toggleProductMenu(){
+function toggleProductMenu() {
   $(".product-menu .container").hover(
     function () {
       // over
-      $(".product-menu").toggleClass('toggle');
+      $(".product-menu").toggleClass("toggle");
       $(".product-menu .content").css("display", "block");
     },
     function () {
       // out
-      $(".product-menu").toggleClass('toggle');
+      $(".product-menu").toggleClass("toggle");
       $(".product-menu .content").css("display", "none");
     }
   );
 }
 
-function setupIntroductionBanner(){
-  var swiper = new Swiper('.s1', {
+function setupIntroductionBanner() {
+  var swiper = new Swiper(".s1", {
     speed: 160,
     spaceBetween: 30,
     centeredSlides: true,
@@ -73,54 +77,78 @@ function setupIntroductionBanner(){
       disableOnInteraction: true,
     },
     pagination: {
-      el: '.swiper-pagination',
+      el: ".swiper-pagination",
       clickable: true,
     },
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
   });
 }
 
-function setupFlashSaleSlider(){
-  var swiper = new Swiper('.s2', {
+function setupFlashSaleSlider() {
+  var swiper = new Swiper(".s2", {
     slidesPerView: 1,
     centeredSlides: false,
     slidesPerGroupSkip: 1,
     grabCursor: true,
     keyboard: { enabled: true },
     breakpoints: { 769: { slidesPerView: 2, slidesPerGroup: 2 } },
-    scrollbar: { el: '.swiper-scrollbar' },
-    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    scrollbar: { el: ".swiper-scrollbar" },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
   });
 }
 
 function makeTimer(startTime) {
+  //		var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");
+  var endTime = new Date(startTime.toString());
+  endTime = Date.parse(endTime) / 1000;
 
-	//		var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");
-		var endTime = new Date(startTime.toString());
-			endTime = (Date.parse(endTime) / 1000);
+  var now = new Date();
+  now = Date.parse(now) / 1000;
 
-			var now = new Date();
-			now = (Date.parse(now) / 1000);
+  var timeLeft = endTime - now;
 
-			var timeLeft = endTime - now;
+  var days = Math.floor(timeLeft / 86400);
+  var hours = Math.floor((timeLeft - days * 86400) / 3600);
+  var minutes = Math.floor((timeLeft - days * 86400 - hours * 3600) / 60);
+  var seconds = Math.floor(
+    timeLeft - days * 86400 - hours * 3600 - minutes * 60
+  );
 
-			var days = Math.floor(timeLeft / 86400);
-			var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
-			var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
-			var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+  if (hours < "10") {
+    hours = "0" + hours;
+  }
+  if (minutes < "10") {
+    minutes = "0" + minutes;
+  }
+  if (seconds < "10") {
+    seconds = "0" + seconds;
+  }
+  // $("#days").html(days );
+  $("#hours").html("<p>" + hours + "</p>");
+  $("#minutes").html("<p>" + minutes + "</p>");
+  $("#seconds").html("<p>" + seconds + "</p>");
+}
 
-			if (hours < "10") { hours = "0" + hours; }
-			if (minutes < "10") { minutes = "0" + minutes; }
-			if (seconds < "10") { seconds = "0" + seconds; }
-			// $("#days").html(days );
-			$("#hours").html("<p>"+hours+"</p>");
-			$("#minutes").html("<p>"+minutes+"</p>");
-			$("#seconds").html("<p>"+seconds+"</p>");
-
-	}
-
-
-
+function setupFlashSaleSlider() {
+  $("#flash-sale-slider").multislider({
+    interval: 0,
+    autoSlide: false,
+    slideAll: true,
+    duration: 800,
+  });
+}
+function processLastSlide(){
+  $('#flash-sale-slider').on('ms.before.animate', function(){
+    var nextAllSlider = $('.item').next();
+    if(nextAllSlider.hasClass("last-slider")){
+      // $('#flash-sale-slider').multislider('next');
+      // alert(nextAllSlider.length);
+    }
+  });
+}
