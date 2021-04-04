@@ -501,10 +501,10 @@ main .banner {
 }
 
 /*--------------------------------------------------------------*/
-/*  3.2.2 main-layout: FlashSale
+/*  3.2.2 main-layout: Product-main
 /*-------------------------------------------------------------*/
 
-.flash-sale > .tittle {
+.product-layout > .tittle {
   width: 450px;
   height: 50px;
   margin-left: 10px;
@@ -512,12 +512,12 @@ main .banner {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
-.flash-sale .tittle > a {
+.product-layout .tittle > a {
   color: #00003b;
   font-size: 1.5em;
   font-weight: bold;
 }
-.flash-sale .tittle .status {
+.product-layout .tittle .status {
   color: #00003b;
   font-size: 1em;
   padding-top: 6px;
@@ -525,27 +525,27 @@ main .banner {
   font-weight: 300;
   width: 120px;
 }
-.flash-sale .tittle .count-down {
+.product-layout .tittle .count-down {
   width: 130px;
   padding-top: 6px;
   margin-left: -30px;
 }
-.flash-sale .tittle .count-down * {
+.product-layout .tittle .count-down * {
   display: inline;
 }
-.flash-sale .tittle .count-down > span {
+.product-layout .tittle .count-down > span {
   color: #00003b;
   font-size: 1em;
   font-weight: bold;
 }
-.flash-sale .tittle .count-down div > p {
+.product-layout .tittle .count-down div > p {
   color: #f8f8f8;
   font-size: 1em;
   padding: 3px 5px 3px 5px;
   clip-path: circle(50%);
   background: #00003b;
 }
-.flash-sale .tittle .count-down div::before {
+.product-layout .tittle .count-down div::before {
   content: " ";
   position: absolute;
   top: 172px;
@@ -555,26 +555,27 @@ main .banner {
   background: #000020;
   opacity: 50%;
 }
+
 /*--------------------------------------------------------------*/
-/*  3.2.2.2 FlashSale: Slider
+/*  3.2.2.2 Product-Slider
 /*-------------------------------------------------------------*/
-.flash-sale-slider {
+.product-slider {
   position: relative;
   width: 100%;
 }
-.flash-sale-slider .MS-content {
+.product-slider .MS-content {
   margin: 15px 5%;
   overflow: hidden;
   white-space: nowrap;
 }
-.flash-sale-slider .MS-content .item {
+.product-slider .MS-content .item {
   display: inline-block;
   height: 100%;
   overflow: hidden;
   position: relative;
   width: 20%;
 }
-.flash-sale-slider .MS-controls button {
+.product-slider .MS-controls button {
   position: absolute;
   color: #00003b;
   top: 120px;
@@ -588,20 +589,20 @@ main .banner {
   text-align: center;
   transition: all 0.3s;
 }
-.flash-sale-slider .MS-controls button:hover {
+.product-slider .MS-controls button:hover {
   cursor: pointer;
   color: #f8f8f8;
   background: #00003b;
   border: none;
 }
-.flash-sale-slider .MS-controls .MS-left {
+.product-slider .MS-controls .MS-left {
   left: 10px;
 }
-.flash-sale-slider .MS-controls .MS-right {
+.product-slider .MS-controls .MS-right {
   right: 10px;
 }
 /*--------------------------------------------------------------*/
-/*  3.2.2.3 FlashSale: Product
+/*  3.2.2.3  Product-container
 /*-------------------------------------------------------------*/
 .product-container {
   margin-left: 3px;
@@ -635,11 +636,11 @@ main .banner {
 .product-container .product-content .images-container {
   max-height: 200px;
 }
-.product-container .product-content .images-container .flashsale-images {
+.product-container .product-content .images-container .product-images {
   width: 190px;
   height: 190px;
 }
-.product-container .product-content .images-container .flashsale-images img {
+.product-container .product-content .images-container .product-images img {
   width: 190px;
   height: 190px;
   padding-left: 30px;
@@ -666,17 +667,17 @@ main .banner {
   -webkit-box-orient: vertical;
   white-space: normal;
 }
-.product-container .product-content .flashsale-price {
+.product-container .product-content .product-price {
   margin-left: 5px;
   margin-top: 15px;
 }
 
-.product-container .product-content .flashsale-price .flashsale-price-special{
+.product-container .product-content .product-price .product-price-special{
   font-size: 1.4rem;
   font-weight: bold;
   color: #ffa53e;
 }
-.product-container .product-content .flashsale-price .flashsale-price-old{
+.product-container .product-content .product-price .product-price-old{
   font-size: 1rem;
   text-decoration: line-through;
   color: #00003b;
@@ -732,6 +733,7 @@ button.btn-show-menu  {
   transform-style: preserve-3d;
   transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
 }
+
 button.btn-show-menu::before {
   position: absolute;
   content: "";
@@ -747,27 +749,117 @@ button.btn-show-menu::before {
   transform: translate3d(0, 0.75em, -1em);
   transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
 }
+
 button.btn-show-menu:hover {
   background: #e9f1ff;
   transform: translate(0, 0.25em);
 }
+
 button.btn-show-menu:hover::before {
   box-shadow: 0 0 0 2px #8685b1, 0 0.5em 0 0 #e2eaff;
   transform: translate3d(0, 0.5em, -1em);
 }
+
 button.btn-show-menu:active {
   background: #e9efff;
   transform: translate(0em, 0.75em);
 }
+
 button.btn-show-menu:active::before {
   box-shadow: 0 0 0 2px #8591b1, 0 0 #e2efff;
   transform: translate3d(0, 0, -1em);
 }
+
 /*--------------------------------------------------------------*/
-/*  old bookshelf layout
+/*  3.2.2.1 main-layout: FlashSale
+/*-------------------------------------------------------------*/
+.flash-sale-layout  .tittle > a{
+  color: #c32c2c;
+}
+.flash-sale-layout  .tittle .status {
+  color: #c32c2c;
+}
+.flash-sale-layout  .tittle .count-down > span{
+  color: #c50d0d;
+}
+.flash-sale-layout  .tittle .count-down div > p{
+  background: #c50d0d;
+}
+.flash-sale-layout .tittle .count-down div::before{
+  background: #410101;
+}
+/*--------------------------------------------------------------*/
+/*  Button show all: Flash Sale
+/*-------------------------------------------------------------*/
+
+button.btn-flash-sale {
+  color: #950a0a;
+  background: #fff0f2;
+  border: 2px solid #900b0b;
+}
+button.btn-flash-sale::before {
+  background: #f9c4c7;
+  box-shadow: 0 0 0 2px #900b0b, 0 0.625em 0 0 #ffe2e6;
+}
+button.btn-flash-sale:hover {
+  background: #ffe9f6;
+}
+button.btn-flash-sale:hover::before {
+  box-shadow: 0 0 0 2px #900b0b, 0 0.5em 0 0 #ffe2ee;
+  transform: translate3d(0, 0.5em, -1em);
+}
+button.btn-flash-sale:active {
+  background: #ffe9f6;
+}
+button.btn-flash-sale:active::before {
+  box-shadow: 0 0 0 2px #900b0b, 0 0 #ffe2e8;
+  transform: translate3d(0, 0, -1em);
+}
+/*--------------------------------------------------------------*/
+/*  3.2.2.2 main-layout: Old Bookshelf
 /*-------------------------------------------------------------*/
 .old-bookshelf-layout{
   margin-top: 15px;
+}
+.old-bookshelf-layout  .tittle{
+  border: 2px solid #d19444;
+  background: linear-gradient(to right, #c59a66,#d8b280);
+  display: block;
+  height: 40px;
+  width: 180px;
+  border-radius: 20px;
+}
+.old-bookshelf-layout  .tittle > a{
+  color: #f8f8f8;
+  margin-top: 15px;
+  margin-left: 20px;
+ text-align: center;
+}
+/*--------------------------------------------------------------*/
+/*  Button show all: Flash Sale
+/*-------------------------------------------------------------*/
+button.btn-old-bookshelf {
+  color: rgb(36, 20, 0);
+  background: #fff9f0;
+  border: 2px solid #d19444;
+}
+button.btn-old-bookshelf::before {
+  background: #f9e8c4;
+  box-shadow: 0 0 0 2px #d19444, 0 0.625em 0 0 #fffbe2;
+}
+button.btn-old-bookshelf:hover {
+  background: #fff4e9;
+}
+button.btn-old-bookshelf:hover::before {
+  box-shadow: 0 0 0 2px #d19444, 0 0.5em 0 0 #fffbe2;
+  transform: translate3d(0, 0.5em, -1em);
+}
+button.btn-old-bookshelf:active {
+  background: #fff3e9;
+}
+button.btn-old-bookshelf:active::before {
+  box-shadow: 0 0 0 2px #d19444, 0 0 #fffbe2;
+  transform: translate3d(0, 0, -1em);
 }
 /*--------------------------------------------------------------*/
 /*  55.  footer

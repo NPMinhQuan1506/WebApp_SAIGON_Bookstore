@@ -8,7 +8,7 @@ $(document).ready(function () {
     makeTimer(startTime);
   }, 1000);
   setupFlashSaleSlider();
-  processLastSlide();
+  setupOldBookshelfSlider();
 });
 
 function setupProductMenu() {
@@ -143,12 +143,12 @@ function setupFlashSaleSlider() {
     duration: 800,
   });
 }
-function processLastSlide(){
-  $('#flash-sale-slider').on('ms.before.animate', function(){
-    var nextAllSlider = $('.item').next();
-    if(nextAllSlider.hasClass("last-slider")){
-      // $('#flash-sale-slider').multislider('next');
-      // alert(nextAllSlider.length);
-    }
+function setupOldBookshelfSlider() {
+  $("#old-bookshelf-slider").multislider({
+    interval: 0,
+    autoSlide: false,
+    slideAll: true,
+    duration: 800,
   });
 }
+
